@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  book_cover_api:
+    build: ./
+    container_name: book_cover_api
+    expose:
+      - '8080'
+    ports:
+      - '8080:8080'
+    command: npm run dev
