@@ -5,7 +5,9 @@ WORKDIR /home/node/app
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
+COPY --from=cache /node_modules ./node_modules
 COPY package*.json ./
+COPY . ./
 
 RUN npm install
 
@@ -14,5 +16,5 @@ COPY . .
 
 RUN npm run build
 
-EXPOSE 8000
+ENV PORT=8080
 CMD [ "npm", "start" ]
